@@ -40,3 +40,4 @@ client/public
 db/matterwiki.sqlite
 .vscode/
 shippingauth.js
+nssm.exe

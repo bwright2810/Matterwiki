@@ -1,0 +1,2 @@
+REM use NSSM with this exe to install as a service (must do npm run build first)
+"C:\Program Files\nodejs\node.exe" C:\nodedev\matterwiki\node_modules\cross-env\bin\cross-env NODE_ENV=production node index.js
