@@ -62,6 +62,7 @@ class SignUp extends React.Component {
           <h3>Matterwiki is a simple wiki for teams</h3><br/>
           <h4>People use it to store documentation, notes, culture guidelines, employee onboarding content
           and everything they want to.</h4><br/>
+          <b>NOTE: After clicking sign up it will appear as if nothing happened, however it worked. Click the MatterWiki logo above to access login.</b>
 
 
         </div>
