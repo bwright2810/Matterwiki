@@ -62,7 +62,7 @@ module.exports = function(app) {
     */
     Users.forge()
     .query(function(qb) {
-        qb.select('id','name','about','email');
+        qb.select('id','name','about','email','admin');
         qb.orderBy('created_at','DESC');
     })
     .fetchAll()
@@ -99,10 +99,10 @@ module.exports = function(app) {
     the error key in the returning object is a boolen which is false if there is no error and true otherwise
     */
     if(req.body.password){
-      userObj = {name: req.body.name, email: req.body.email, password: req.body.password, about: req.body.about}
+      userObj = {name: req.body.name, email: req.body.email, password: req.body.password, about: req.body.about, admin: req.body.admin}
     }
     else {
-      userObj = {name: req.body.name, email: req.body.email, about: req.body.about}
+      userObj = {name: req.body.name, email: req.body.email, about: req.body.about, admin: req.body.admin}
     }
     Users.forge({id: req.body.id})
       .save(userObj)
@@ -172,7 +172,7 @@ module.exports = function(app) {
           */
           Users.forge({id: req.params.id})
           .query(function(qb) {
-              qb.select('id','name','about','email');
+              qb.select('id','name','about','email','admin');
           })
           .fetch()
             .then(function (user) {

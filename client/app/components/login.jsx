@@ -1,5 +1,5 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import Alert from 'react-s-alert';
 
 class Login extends React.Component {
@@ -36,6 +36,7 @@ class Login extends React.Component {
       else {
         window.localStorage.setItem('userToken',response.data.token);
         window.localStorage.setItem('userId',response.data.user.id);
+        window.localStorage.setItem('isAdmin', Boolean(response.data.user.admin));
         window.localStorage.setItem('userEmail',response.data.user.token);
         hashHistory.push('home');
         Alert.success('You are now logged in');
@@ -56,6 +57,9 @@ class Login extends React.Component {
         </div>
         <div className="col-sm-12 form-group">
           <button onClick={this.handleSubmit} className="btn btn-default btn-block btn-lg">Sign in</button>
+        </div>
+        <div className="col-sm-12">
+          Or <Link to="/signup" className="">Sign Up</Link>
         </div>
       </form>
       </div>

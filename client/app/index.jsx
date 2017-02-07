@@ -11,6 +11,7 @@ import EditArticle from './components/edit.jsx';
 import ArticleHistory from './components/history.jsx';
 import Admin from './components/admin.jsx';
 import Setup from './components/setup.jsx';
+import SignUp from './components/signup.jsx';
 import EditTopic from './components/edit_topics.jsx';
 import EditUser from './components/edit_users.jsx';
 
@@ -28,6 +29,7 @@ render(
       <Route path="topic/edit/:topicId" component={EditTopic}/>
       <Route path="user/edit/:userId" component={EditUser}/>
       <Route path="setup" component={Setup}/>
+      <Route path="signup" component={SignUp}/>
     </Route>
   </Router>
 , document.getElementById('app'));

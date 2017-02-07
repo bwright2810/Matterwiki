@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Matterwiki/Matterwiki.git"
+    "url": "git+https://github.com/bwright2810/Matterwiki.git"
   },
   "author": "Nishant Arora (@nshntarora)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Matterwiki/Matterwiki/issues"
+    "url": "https://github.com/bwright2810/Matterwiki/issues"
   },
   "homepage": "http://matterwiki.com",
   "dependencies": {
@@ -43,5 +43,6 @@
     "react-s-alert": "1.2.2",
     "sqlite3": "^3.1.4",
     "webpack": "1.13.2"
-  }
+  },
+  "devDependencies": {}
 }

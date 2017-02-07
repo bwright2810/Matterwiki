@@ -35,6 +35,8 @@ require('./api/authentication')(app);
 // Importing the setup endpoint
 require('./api/setup')(app);
 
+require('./api/signup')(app);
+
 apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
@@ -101,7 +103,7 @@ apiRoutesAdmin.use(function(req, res, next) {
           }
         });
       } else {
-        if(decoded.id == 1) {
+        if(decoded.admin) {
           // if everything is good, save to request for use in other routes
           req.decoded = decoded;
           next();
@@ -153,7 +155,6 @@ require('./api/archives')(apiRoutes);
 
 // Importing all endpoints which are only admin accessible
 require('./api/admin')(apiRoutesAdmin);
-
 
 app.use('/api', apiRoutes);
 app.use('/api', apiRoutesAdmin);

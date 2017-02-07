@@ -11,6 +11,7 @@ var Topics = require('../models/topic.js');
 var bcrypt = require('bcryptjs');
 const saltRounds = 10;
 var db = require('../db.js'); //this file contains the knex file import. it's equal to knex=require('knex')
+var auth = require('../config.js')
 
 module.exports = function(app) {
 
@@ -24,11 +25,11 @@ module.exports = function(app) {
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
       Users.forge()
         .save({
-          id: 1,
           name: req.body.name,
           email: req.body.email,
           password: hash,
-          about: req.body.about
+          about: req.body.about,
+          admin: "Y"
         })
         .then(function (collection) {
           Topics.forge().save({name: "general", description: "knowledge for everyone"}).then(function(topic){

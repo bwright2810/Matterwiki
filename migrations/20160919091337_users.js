@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('email').notNullable();
     table.string('password').notNullable();
     table.string('about').notNullable();
+    table.string('admin');
     table.timestamp('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
     table.timestamp('updated_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
   })
