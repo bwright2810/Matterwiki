@@ -105,7 +105,7 @@ class ViewArticle extends React.Component {
             </div>
             <Link to={'/article/edit/'+this.state.article.id} className="btn btn-default btn-block btn-lg">Edit</Link>
             <Link to={'/article/history/'+this.state.article.id} className="btn btn-default btn-block btn-lg">History</Link>
-            {(window.localStorage.getItem('userId')==1) ? <button className="btn btn-default btn-block btn-lg" onClick={this.deleteArticle}>Delete</button>
+            {(window.localStorage.getItem('isAdmin')) ? <button className="btn btn-default btn-block btn-lg" onClick={this.deleteArticle}>Delete</button>
           : ''}
           </div>
             </div>
