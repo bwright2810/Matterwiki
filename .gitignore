@@ -41,3 +41,4 @@ db/matterwiki.sqlite
 .vscode/
 shippingauth.js
 nssm.exe
+tests/e2e/db/matterwiki.sqlite
