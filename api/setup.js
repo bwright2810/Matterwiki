@@ -32,16 +32,22 @@ module.exports = function(app) {
           admin: "Y"
         })
         .then(function (collection) {
-          Topics.forge().save({name: "general", description: "knowledge for everyone"}).then(function(topic){
-            res.json({
-              error: {
-                error: false,
-                message: ''
-              },
-              code: 'B131',
-              data: collection.toJSON()
-            });
+          Topics.forge().save({name: "general", description: "knowledge for everyone"}).then (function(topic) {
+            bcrypt.hash("guest", saltRounds, function(err2, hash2) {
+              Users.forge().save({name: "Guest", email: "guest@guest.com", password: hash2, about: "Guest User"})
+              .then(function(guestCollection){
+                res.json({
+                  error: {
+                    error: false,
+                    message: ''
+                  },
+                  code: 'B131',
+                  data: collection.toJSON()
+                });
+              })
+            })
           })
+        })
         .catch(function (error) {
           res.status(500).json({
             error: {
@@ -55,7 +61,5 @@ module.exports = function(app) {
           })
         });
       });
-        });
-      });
-
+    });
 }

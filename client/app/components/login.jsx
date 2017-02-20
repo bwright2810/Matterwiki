@@ -6,6 +6,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGuestLogin = this.handleGuestLogin.bind(this);
   }
 
   componentDidMount(){
@@ -18,6 +19,16 @@ class Login extends React.Component {
     e.preventDefault();
     var email = document.getElementById("inputEmail").value;
     var password = document.getElementById("inputPassword").value;
+    this.login(email, password);
+  }
+
+  handleGuestLogin(e) {
+    e.preventDefault();
+    console.log(this);
+    this.login("guest@guest.com", "guest");
+  }
+
+  login(email, password) {
     var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded"
     });
@@ -44,24 +55,36 @@ class Login extends React.Component {
     });
   }
 
+  handleSignUp(e) {
+    e.preventDefault();
+    hashHistory.push('signup');
+  }
+
   render () {
     return(<div className="container login-box row">
-      <div className="col-md-12 col-sm-12">
-        <h3>Login</h3>
-          <form>
-        <div className="col-sm-12 form-group">
-          <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
-        </div>
-        <div className="col-sm-12 form-group">
-          <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
-        </div>
-        <div className="col-sm-12 form-group">
-          <button onClick={this.handleSubmit} className="btn btn-default btn-block btn-lg">Sign in</button>
-        </div>
-        <div className="col-sm-12">
-          Or <Link to="/signup" className="">Sign Up</Link>
-        </div>
-      </form>
+        <div className="col-md-12 col-sm-12">
+          <h3>Login</h3>
+            <form>
+          <div className="col-sm-12 form-group">
+            <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
+          </div>
+          <div className="col-sm-12 form-group">
+            <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
+          </div>
+          <div className="col-sm-12 form-group">
+            <button onClick={this.handleSubmit} className="btn btn-default btn-block btn-lg">Sign in</button>
+          </div>
+          <div className="col-sm-12 form-group">
+            Or<br/>
+            <br/>
+            <button onClick={this.handleSignUp} className="btn btn-default btn-block btn-lg">Sign Up</button>
+          </div>
+          <div className="col-sm12 form-group">
+            Or<br/>
+            <br/>
+            <button onClick={this.handleGuestLogin} className="btn btn-default btn-block btn-lg">Guest Login</button>
+          </div>
+        </form>
       </div>
     </div>);
   }
