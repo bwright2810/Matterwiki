@@ -7,7 +7,7 @@ class ViewArticle extends React.Component {
   constructor(props) {
     super(props);
     this.deleteArticle = this.deleteArticle.bind(this);
-    this.state = {article: {}, loading: true};
+    this.state = {article: {}, loading: true, deleteSecondAttempt: false};
   }
 
   componentDidUpdate() {
@@ -42,6 +42,11 @@ class ViewArticle extends React.Component {
 
   deleteArticle(e) {
     e.preventDefault();
+    if (!this.state.deleteSecondAttempt) {
+      alert("Are you SURE you want to permanently delete this article? If so, you must click Delete again.");
+      this.setState({ deleteSecondAttempt: true });
+      return;
+    }
     var myHeaders = new Headers({
         "Content-Type": "application/x-www-form-urlencoded",
         "x-access-token": window.localStorage.getItem('userToken')
@@ -105,7 +110,7 @@ class ViewArticle extends React.Component {
             </div>
             <Link to={'/article/edit/'+this.state.article.id} className="btn btn-default btn-block btn-lg">Edit</Link>
             <Link to={'/article/history/'+this.state.article.id} className="btn btn-default btn-block btn-lg">History</Link>
-            {(window.localStorage.getItem('isAdmin')) ? <button className="btn btn-default btn-block btn-lg" onClick={this.deleteArticle}>Delete</button>
+            {(window.localStorage.getItem('isAdmin') === "true") ? <button className="btn btn-default btn-block btn-lg" onClick={this.deleteArticle}>Delete</button>
           : ''}
           </div>
             </div>
