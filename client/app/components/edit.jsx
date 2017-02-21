@@ -8,11 +8,19 @@ class EditArticle extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {body: "",title: "", topic_id: "", topics: [], loading: true};
+    this.handleInsertImage = this.handleInsertImage.bind(this);
+    this.state = {body: "",title: "", topic_id: "", topics: [], loading: true, image_url: ""};
   }
 
   handleChange() {
-    this.setState({body: this.refs.body.value, title: this.refs.title.value});
+    this.setState({body: this.refs.body.value, title: this.refs.title.value, image_url: this.refs.image_url.value});
+  }
+
+  handleInsertImage(e) {
+    e.preventDefault();
+    const imageUrl = this.refs.image_url.value;
+    document.querySelector("trix-editor").editor.insertHTML("<img src='" + imageUrl + "'>");
+    this.setState({image_url: ""});
   }
 
   handleSubmit(e) {
@@ -114,6 +122,13 @@ class EditArticle extends React.Component {
               <trix-toolbar id="my_toolbar"></trix-toolbar>
           <trix-editor toolbar="my_toolbar" input="my_input" placeholder="Start writing here...." class="input-body"></trix-editor>
           <input id="my_input" type="hidden" value={this.state.body} ref="body" onChange={this.handleChange}/>
+                 <br/>
+                 <label>Add Images</label>
+                 <br/>
+                 <form>
+                  <input id="imageUrl" value={this.state.image_url} onChange={this.handleChange} placeholder="Enter an Image URL" ref="image_url" style={{"width": "500px"}}></input>&nbsp;
+                  <button onClick={this.handleInsertImage}>Insert Image</button>
+                 </form>
                  <br/>
                  <label>Choose topic</label>
                  <select className="form-control topic-select" ref="topic" defaultValue={this.state.topic_id}>
