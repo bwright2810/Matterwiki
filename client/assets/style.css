@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Georgia');
 
 .primary-logo {
   height: 4em;
@@ -96,8 +96,8 @@ padding: 10px 20px;
 }
 
 .single-article-body {
-  font-family: "Merriweather", sans-serif;
-  font-size: 1.5em;
+  font-family: "Georgia", serif;
+  font-size: 1.3em;
   margin-bottom: 2em;
 padding: 0em 1em;
 }
@@ -124,8 +124,8 @@ input:focus
 }
 
 .new-article .input-body {
-  font-family: "Merriweather", serif;
-  font-size: 1.5em;
+  font-family: "Georgia", serif;
+  font-size: 1.3em;
   padding: 10px 20px;
   border-left: 1px solid #efefef;
   border-right: 1px solid #efefef;
